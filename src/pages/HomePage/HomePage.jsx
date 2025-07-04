@@ -1,11 +1,12 @@
 import {Link} from 'react-router-dom';
 import './HomePage.css'
 import { Header } from '../../Header/Header';
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import dayjs from 'dayjs'
 
 export function HomePage({movieData}){
     const [bgImage, setBgImage] = useState(null);
+    const rowRef = useRef(null)
     
 
     useEffect(()=>{
@@ -23,6 +24,32 @@ export function HomePage({movieData}){
         },4000)
     },[movieData])
 
+    useEffect(() => {
+        const scrollRow = rowRef.current;
+
+        const handleWheel = (evt) => {
+            if (Math.abs(evt.deltaX) === 0) {
+                evt.preventDefault();
+                scrollRow.scrollLeft += evt.deltaY * 9;
+            }
+        };
+
+        scrollRow.addEventListener('wheel', handleWheel, { passive: false });
+
+        return () => {
+            scrollRow.removeEventListener('wheel', handleWheel);
+        };
+    }, []);
+
+    // ⬅️ ➡️ Arrow click handlers
+    const scrollLeft = () => {
+        rowRef.current.scrollLeft -= 700;
+    };
+
+    const scrollRight = () => {
+        rowRef.current.scrollLeft += 700;
+    };
+
     return(
         <>
             <Header/>
@@ -39,9 +66,9 @@ export function HomePage({movieData}){
             
             <div className="container">
                 <div className="titletype"><h2>Suggested</h2><Link to={'/moviespage'}><i className="fa-solid fa-arrow-right"></i></Link></div>
-                <div className="arrow left"><i className="fa-solid fa-arrow-left"></i></div> 
-                <div className="arrow right"><i className="fa-solid fa-arrow-right"></i></div> 
-                <div className="row">
+                <div className="arrow left" onClick={scrollLeft}><i className="fa-solid fa-arrow-left"></i></div> 
+                <div className="arrow right" onClick={scrollRight}><i className="fa-solid fa-arrow-right"></i></div> 
+                <div className="row" ref={rowRef}>
                         {movieData && movieData.map((eachMovieData)=>{
                             return(
                                 <div className="movieDetails" key={eachMovieData.id}>

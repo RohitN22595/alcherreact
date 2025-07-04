@@ -1,8 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: __Inter_09ec85, __Inter_Fallback_09ec85, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen-sans, ubuntu, cantarell, "Helvetica Neue", sans-serif;
-
+    font-family: 'Inter', sans-serif;
 }
 
 body {
@@ -95,11 +94,18 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    height: 35px;
     font-weight: 550;
     margin-left: 10px;
     color: rgba(255, 255, 255, 0.885);
     padding-left: 10px;
     padding-right: 10px;
+    border: none;
+    border-radius: 17.5px;
+    transition:
+        background-color 0.5s ease-in-out,
+        color 0.5s ease-in-out,
+        padding 0.5s ease-in-out;
 }
 
 .typeBox div i{
@@ -133,6 +139,13 @@ body {
     align-items: center;
     padding-left: 12.5px;
     padding-right: 12.5px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    transition:
+        background-color 0.4s ease-in-out,
+        color 0.5s ease-in-out,
+        padding 0.5s ease-in-out;
 }
 
 .other div:hover{
@@ -156,9 +169,11 @@ body {
     font-weight: bold;
     font-size: 14px;
     background-color: rgba(255, 255, 255, 0.171);   
+    transition:
+        background-color 0.5s ease-in-out;
 }
 
 .signIn:hover{
-    background-color: rgba(255, 255, 255, 0.25);   
-
+    background-color: rgba(255, 255, 255, 0.25); 
+    
 }

@@ -1,12 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .movieGrid{
     display: grid;
-    grid-template-columns: repeat(6, minmax(180px, 1fr));
-    height: 100%;
-    width: 100%;
-    gap: 16px;
-    margin-top: 64px;
-    margin-left: 5px;
-    margin-right: 5px;
+    grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
+    gap: 16px; /* space between items */
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.sugessted{
+    color: white;
+    margin-top: 110px;
+    margin-left: 79px;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.6px;
 }
 
 

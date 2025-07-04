@@ -10,7 +10,7 @@ export function MoviesPage({movieData}){
     return(
         <>
             <Header></Header>
-
+            <p className='sugessted'>Suggested</p>
             <div className='movieGrid'>
                 {movieData && movieData.map((eachMovieData)=>{
                     return(

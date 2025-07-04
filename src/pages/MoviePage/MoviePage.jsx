@@ -2,9 +2,30 @@ import './MoviePage.css'
 import '../HomePage/HomePage.css'
 import dayjs from 'dayjs'
 import { Header } from '../../Header/Header'
+import {  useRef, useEffect } from 'react'
 
 
 export function MoviePage(){
+    const castitemRef = useRef(null);
+
+    
+    useEffect(() => {
+        const scrollRow = castitemRef.current;
+        
+        const handleWheel = (evt) => {
+            if (Math.abs(evt.deltaX) === 0) {
+                evt.preventDefault();
+                scrollRow.scrollLeft += evt.deltaY * 9;
+            }
+        };
+        
+        scrollRow.addEventListener('wheel', handleWheel, { passive: false });
+        
+        return () => {
+            scrollRow.removeEventListener('wheel', handleWheel);
+        };
+    }, []);
+    
     const movieInfo = JSON.parse(localStorage.getItem('movieInfo'));
     if (!movieInfo) {
                 console.log('Movie not found');
@@ -12,6 +33,13 @@ export function MoviePage(){
                 }
     const castData = movieInfo.casts;
     console.log(movieInfo, castData);
+
+    const scrollLeft = () =>{
+        castitemRef.current.scrollLeft -= 700;
+    }
+    const scrollRight = () =>{
+        castitemRef.current.scrollLeft += 700;
+    }
 
     return(
         <>
@@ -45,9 +73,9 @@ export function MoviePage(){
                     <div className="container2">
                         <p className="titleCast">Cast of {movieInfo.original_title}</p>
 
-                        <div className="arrow left"><i className="fa-solid fa-arrow-left"></i></div> 
-                        <div className="arrow right"><i className="fa-solid fa-arrow-right"></i></div> 
-                        <div className="castItem">
+                        <div className="arrow left" onClick={scrollLeft}><i className="fa-solid fa-arrow-left"></i></div> 
+                        <div className="arrow right" onClick={scrollRight}><i className="fa-solid fa-arrow-right"></i></div> 
+                        <div className="castItem" ref={castitemRef}>
                             {castData.map((castInfo)=>{
                                 return(
                                     <div key={castInfo.id} className="single">
