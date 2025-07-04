@@ -1,0 +1,14 @@
+.movieGrid{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(180px, 1fr));
+    height: 100%;
+    width: 100%;
+    gap: 16px;
+    margin-top: 64px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+
+
