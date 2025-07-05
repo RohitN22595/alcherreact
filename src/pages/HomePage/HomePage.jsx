@@ -6,8 +6,7 @@ import dayjs from 'dayjs'
 
 export function HomePage({movieData}){
     const [bgImage, setBgImage] = useState(null);
-    const rowRef = useRef(null)
-    
+    const rowRef = useRef(null);
 
     useEffect(()=>{
         const backdropImages = movieData.map(movie => movie.backdrop_path);
@@ -78,8 +77,10 @@ export function HomePage({movieData}){
                                         </div>
                                     </Link>
                                     <div className="detailContainer">
-                                        <p className="movieTitle">{eachMovieData.original_title}</p>
-                                        <p className="releaseYear">{dayjs(eachMovieData.release_date).format('YYYY')}</p>
+                                        <div>
+                                            <p className="movieTitle">{eachMovieData.original_title}</p>
+                                            <p className="releaseYear">{dayjs(eachMovieData.release_date).format('YYYY')}</p>
+                                        </div>
                                     </div>
                                 </div>
                             )

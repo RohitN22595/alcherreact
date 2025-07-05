@@ -123,6 +123,21 @@ body {
     padding-right: 10px;
 }
 
+.typeBox div,
+.typeBox div:hover,
+.typeBox div:active,
+.typeBox div:focus {
+    text-decoration: none;
+}
+
+.typeBox a,
+.typeBox a:hover,
+.typeBox a:active,
+.typeBox a:focus {
+    text-decoration: none;
+    color: inherit; /* optional: keeps color consistent */
+}
+
 .other{
     display: flex;
     justify-content: space-between;
@@ -146,6 +161,20 @@ body {
         background-color 0.4s ease-in-out,
         color 0.5s ease-in-out,
         padding 0.5s ease-in-out;
+}
+
+.other div,
+.other div:hover,
+.other div:active,
+.other div:focus {
+    text-decoration: none;
+}
+.other a,
+.other a:hover,
+.other a:active,
+.other a:focus {
+    text-decoration: none;
+    color: inherit;
 }
 
 .other div:hover{

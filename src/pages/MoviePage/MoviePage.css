@@ -90,7 +90,6 @@
 }
 
 .options{
-    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -101,7 +100,7 @@
 .options i{
     cursor: pointer;
     transition: color 0.3s ease-in-out;
-
+    color: white;
 }
 
 .options i:hover{
@@ -128,6 +127,7 @@
 
 .Watch i{
     margin-right: 10px;
+    color: black;
 }
 
 /* cast */

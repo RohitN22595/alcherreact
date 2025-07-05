@@ -1,6 +1,7 @@
 import { HomePage } from './pages/HomePage/HomePage'
 import { MoviePage } from './pages/MoviePage/MoviePage'
 import { MoviesPage } from './pages/MoviesPage/MoviesPage'
+import { SavedPage } from './pages/SavedPage/SavedPage'
 import { Routes, Route } from 'react-router'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -26,6 +27,7 @@ function App() {
             <Route index element={<HomePage movieData={movieData} />}/>
             <Route path='moviepage' element={<MoviePage movieData={movieData} />}/>
             <Route path='moviespage' element={<MoviesPage movieData={movieData} />}/>
+            <Route path='savedpage' element={<SavedPage />}/>
         </Routes>
     )
 }

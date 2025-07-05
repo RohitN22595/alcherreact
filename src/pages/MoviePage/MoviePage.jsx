@@ -3,11 +3,13 @@ import '../HomePage/HomePage.css'
 import dayjs from 'dayjs'
 import { Header } from '../../Header/Header'
 import {  useRef, useEffect } from 'react'
+import {Link} from 'react-router-dom';
 
 
 export function MoviePage(){
     const castitemRef = useRef(null);
 
+    // mouse scroll
     
     useEffect(() => {
         const scrollRow = castitemRef.current;
@@ -25,6 +27,8 @@ export function MoviePage(){
             scrollRow.removeEventListener('wheel', handleWheel);
         };
     }, []);
+
+    // get movie info
     
     const movieInfo = JSON.parse(localStorage.getItem('movieInfo'));
     if (!movieInfo) {
@@ -34,11 +38,26 @@ export function MoviePage(){
     const castData = movieInfo.casts;
     console.log(movieInfo, castData);
 
+    // scroll btton
+
     const scrollLeft = () =>{
         castitemRef.current.scrollLeft -= 700;
     }
     const scrollRight = () =>{
         castitemRef.current.scrollLeft += 700;
+    }
+
+    // save movie
+
+    const saveit = ()=>{
+        const existing = JSON.parse(localStorage.getItem('savethismovie') || '[]');
+        
+        // Prevent duplicate entries
+        const isAlreadySaved = existing.find(movie => movie.id === movieInfo.id);
+        if (!isAlreadySaved) {
+            existing.push(movieInfo);
+            localStorage.setItem('savethismovie', JSON.stringify(existing));
+        }
     }
 
     return(
@@ -62,7 +81,7 @@ export function MoviePage(){
                             </div>
                             <div className="options">
                                 <button className="Watch"><i className="fa-solid fa-play"></i>Watch Free</button>
-                                <i className="fa-solid fa-bookmark"></i>
+                                <Link to='/savedpage'><i className="fa-solid fa-bookmark" onClick={saveit}></i></Link>
                                 <i className="fa-solid fa-circle-check"></i>
                                 <i className="fa-solid fa-arrow-up-from-bracket"></i>
                             </div>

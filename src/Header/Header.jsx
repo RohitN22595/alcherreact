@@ -12,14 +12,14 @@ export function Header(){
                     <button className="searchButton"><img src="images/vecteezy_magnifying-glass-or-search-icon-flat-graphic-on-isolated_-removebg-preview.png"/></button>
                 </div>
                 <div className="typeBox">
-                    <div className="homeBox"><i className="fa-solid fa-house"></i>Home</div>
+                    <Link to='/'><div className="homeBox"><i className="fa-solid fa-house"></i>Home</div></Link>
                     <div className="tvBox"><i className="fa-solid fa-tv"></i>Live TV</div>
                     <div className="demandBox"><i className="fa-solid fa-display"></i>On Demand</div>
-                    <div className="discoverBox"><i className="fa-solid fa-compass"></i>Discover</div>
+                    <Link to="/moviespage"><div className="discoverBox"><i className="fa-solid fa-compass"></i>Discover</div></Link>
                 </div>
                 <div className="other">
                     <div className="screenShare"><i className="fa-solid fa-play"></i></div>
-                    <div className="saveLater"><i className="fa-solid fa-bookmark"></i></div>
+                    <Link to="/savedpage"><div className="saveLater"><i className="fa-solid fa-bookmark"></i></div></Link>
                     <button className="signIn">Sign In</button>
                 </div>
             </div>
